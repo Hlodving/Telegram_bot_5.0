@@ -8,6 +8,8 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 import sqlite3 as sq
 from datetime import datetime
 
+# Проверка гита 
+
 
 class QuestionsState(StatesGroup):
     # Хранит на каком этапе диалога находится клиент
