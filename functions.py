@@ -14,5 +14,3 @@ def final_count(first_part, nostalgist, patriot, antagonist):
     elif antagonist > first_part and antagonist > nostalgist and antagonist > patriot:
         x = 'Вы антогонист'
     return x
-
-# Еще проверка слияния веток
