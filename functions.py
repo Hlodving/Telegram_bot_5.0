@@ -1,3 +1,6 @@
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+
+
 def final_count(first_part, nostalgist, patriot, antagonist):
     if first_part > nostalgist and first_part > patriot and first_part > antagonist:
         x = '''<b>Вы пятая часть</b>
@@ -14,3 +17,11 @@ def final_count(first_part, nostalgist, patriot, antagonist):
     elif antagonist > first_part and antagonist > nostalgist and antagonist > patriot:
         x = 'Вы антогонист'
     return x
+
+
+def buttons(btn_text_1, btn_text_2, btn_text_3, btn_text_4):
+    btn1 = KeyboardButton(btn_text_1)
+    btn2 = KeyboardButton(btn_text_2)
+    btn3 = KeyboardButton(btn_text_3)
+    btn4 = KeyboardButton(btn_text_4)
+    return btn1, btn2, btn3, btn4

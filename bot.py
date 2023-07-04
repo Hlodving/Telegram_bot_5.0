@@ -1,5 +1,5 @@
 import config
-from functions import final_count
+from functions import final_count, buttons
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
@@ -80,11 +80,8 @@ async def choose_restoraunts_process(message: types.Message, state: FSMContext):
     con.execute(sql_request, (user_id, user_name, 0, 0, 0, 0))
     con.commit()
 
-    btn1 = KeyboardButton('Носил на груди')
-    btn2 = KeyboardButton(
-        'Приклеил огромную ленту к своей машине')
-    btn3 = KeyboardButton('Не носил вообще')
-    btn4 = KeyboardButton('Выбросил в урну')
+    btn1, btn2, btn3, btn4 = buttons('Носил на груди', 'Приклеил огромную ленту к своей машине',
+                                     'Не носил вообще', 'Выбросил в урну')
 
     markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
     markup.add(btn1, btn2, btn3, btn4)
@@ -99,11 +96,8 @@ async def dish_process(message: types.Message, state: FSMContext):
     user_msg = message.text
     await state.update_data(SECOND=user_msg)
 
-    btn1 = KeyboardButton('Раньше такого не было')
-    btn2 = KeyboardButton('Это нормальная ситуация')
-    btn3 = KeyboardButton(
-        'Россия наводнена мигрантами')
-    btn4 = KeyboardButton('Я не замечаю таких новостей')
+    btn1, btn2, btn3, btn4 = buttons('Раньше такого не было', 'Это нормальная ситуация',
+                                     'Россия наводнена мигрантами', 'Я не замечаю таких новостей')
 
     if user_msg == 'Носил на груди':
         with sq.connect("baza_bot.db") as con:
@@ -142,10 +136,8 @@ async def drink_process(message: types.Message, state: FSMContext):
     user_msg = message.text
     await state.update_data(THIRD=user_msg)
 
-    btn1 = KeyboardButton('ужасная инфляция')
-    btn2 = KeyboardButton('чертовы спекулянты')
-    btn3 = KeyboardButton('зарплата так же не вырастет')
-    btn4 = KeyboardButton('за то нет войны!')
+    btn1, btn2, btn3, btn4 = buttons('ужасная инфляция', 'чертовы спекулянты',
+                                     'зарплата так же не вырастет', 'за то нет войны!')
 
     if user_msg == 'Раньше такого не было':
         with sq.connect("baza_bot.db") as con:
@@ -183,11 +175,9 @@ async def drink_process(message: types.Message, state: FSMContext):
 async def order_process(message: types.Message, state: FSMContext):
     user_msg = message.text
     await state.update_data(FOURTH=user_msg)
-    btn1 = KeyboardButton('Расстрелять')
-    btn2 = KeyboardButton(
-        'Корупция есть во всех странах')
-    btn3 = KeyboardButton('Рыба гниет с головы')
-    btn4 = KeyboardButton('Нужно начать с себя')
+
+    btn1, btn2, btn3, btn4 = buttons('Расстрелять', 'Корупция есть во всех странах',
+                                     'Рыба гниет с головы', 'Нужно начать с себя')
 
     if user_msg == 'ужасная инфляция':
         with sq.connect("baza_bot.db") as con:
